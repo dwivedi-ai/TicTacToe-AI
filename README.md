@@ -7,6 +7,8 @@
 
 This is a Tic Tac Toe game made by using Web Technologies. The most interesting thing in this is that it has an Artificial Intelligence to play with the user. This AI uses the Minimax Algorithm to find the best optimal move.
 
+### 🎯 This project is live at the URL: https://iamankitdwivedi.github.io/TicTacToe-AI/
+
 ### Screenshots
 ![s1](https://user-images.githubusercontent.com/65527745/154841942-33067088-85e5-4e54-8fa1-1f1abb6304ab.png)
 ![s2](https://user-images.githubusercontent.com/65527745/154841945-176caacb-f54c-498e-a847-1b531d145007.png)
