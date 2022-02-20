@@ -1,0 +1,230 @@
+/* Colors:
+Rich Black FOGRA 29: #001219
+Gunmetal: #192A32
+Oxford Blue: #0F152C
+Space Cadets: #17203E
+Wild Blue Yonder: #8EA4DB
+Vivid Sky Blue: #00C9EA
+Glaucous: #5B79B8
+*/
+
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: #001219;
+}
+
+main {
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+}
+
+
+header {
+    
+    background-color: #001219;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.nav {
+    flex: 0 1 auto;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-radius: 2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.nav:hover{
+    height: 4rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: larger;
+}
+.nav img{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+.nav:hover img{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50px;
+}
+.activate {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+}
+.content {
+    flex: 1 1 auto;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    background-color: #192a32;
+    height: 500px;
+    width: 500px;
+    border-radius: 25px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+    transition: all 0.3s ease;
+    
+}
+.card.activate {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+.row {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tile {
+    background-color: #1f3540;
+    height: 150px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2dc5be;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 6em;
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.tile.cpu {
+    color: #f2b237;
+}
+.tile.disabled {
+    pointer-events: none;
+}
+
+.choose {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.choose {
+    background-color: #1f3540;
+    height: 200px;
+    width: 400px;
+    color: #2dc5be;
+    border-radius: 25px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%,-50%) scale(0.9);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.3s ease;
+}
+
+.choose.activate {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%,-50%) scale(1);
+}
+.choose-title {
+    height: 60px;
+    width: 100%;
+    border-bottom: 1px solid #001219;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    font-size: 2em;
+}
+
+.choose-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 139px;
+    
+}
+.chooser {
+    cursor: pointer;
+    color: #1f3540;
+    font-family: 'Poppins';
+    font-weight: 800;
+    font-size: 3em;
+    height: 80px;
+    width: 150px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.win-choose-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 119px;
+    
+}
+
+.reset {
+    width: 180px;
+    cursor: pointer;
+    color: #1f3540;
+    font-family: 'Poppins';
+    font-weight: 800;
+    font-size: 3em;
+    height: 80px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.won-title {
+    font-weight: 600;
+    height: 80px;
+    font-size: 3em;
+}
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .card {
+        height: 300px;
+        width: 300px;
+    }
+    .tile {
+        height: 90px;
+        width: 90px;
+    }
+    .choose{
+        width: 300px;
+        font-size: 0.8em;
+    }
+    .chooser{
+        width: 120px;
+    }
+}
