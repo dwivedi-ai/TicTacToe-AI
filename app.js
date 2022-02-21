@@ -115,13 +115,17 @@ function triggerClick(tile)
             if (x == "TIE")
             {
                 // If it's a Tie, then print it and clear the currentPlayer value to avoid any mess.
-                displayWinner("TIE");
                 currentPlayer = null;
+                setTimeout(() => {
+                    displayWinner(x);
+                }, 1000);
             }else{
                 // If someone has won, then disable every tile and display the winner and clear the currentPlayer value.
-                displayWinner(x);
                 currentPlayer = null;
                 disableEveryTile();
+                setTimeout(() => {
+                    displayWinner(x);
+                }, 1000);
             }
         }
     }else{
@@ -144,13 +148,17 @@ function triggerClick(tile)
             if (x == "TIE")
             {
                 // If it's a Tie, then print it and clear the currentPlayer value to avoid any mess.
-                displayWinner("TIE");
                 currentPlayer = null;
+                setTimeout(() => {
+                    displayWinner(x);
+                }, 1000);
             }else{
                 // If someone has won, then disable every tile and display the winner and clear the currentPlayer value.
-                displayWinner(x);
                 currentPlayer = null;
                 disableEveryTile();
+                setTimeout(() => {
+                    displayWinner(x);
+                }, 1000);
             }
         }
     }
@@ -266,7 +274,3 @@ function myGithub()
 {
     window.open("https://github.com/iamankitdwivedi", "_blank");
 }
-
-
-// █▀▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█   █▄▄ █▄█   ▄▀█ █▄░█ █▄▀ █ ▀█▀   █▀▄ █░█░█ █ █░█ █▀▀ █▀▄ █
-// █▄▄ █▀▄ ██▄ █▀█ ░█░ █ █▄█ █░▀█   █▄█ ░█░   █▀█ █░▀█ █░█ █ ░█░   █▄▀ ▀▄▀▄▀ █ ▀▄▀ ██▄ █▄▀ █
