@@ -8,6 +8,7 @@ Vivid Sky Blue: #00C9EA
 Glaucous: #5B79B8
 */
 
+/* My styling is horrible, read it at your own risk */
 
 body {
     margin: 0;
@@ -235,3 +236,8 @@ header {
         width: 120px;
     }
 }
+
+/* 
+█▀▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█   █▄▄ █▄█   ▄▀█ █▄░█ █▄▀ █ ▀█▀   █▀▄ █░█░█ █ █░█ █▀▀ █▀▄ █
+█▄▄ █▀▄ ██▄ █▀█ ░█░ █ █▄█ █░▀█   █▄█ ░█░   █▀█ █░▀█ █░█ █ ░█░   █▄▀ ▀▄▀▄▀ █ ▀▄▀ ██▄ █▄▀ █
+*/

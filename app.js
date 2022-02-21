@@ -1,53 +1,26 @@
+// Initializing all the variable and constants 
 let user = 'O';
 let cpu = 'X';
 let currentPlayer = undefined;
+// Creating our scoresIndex, in order to keep the CPU as the maximizing player.
 let scoresIndex;
+// Initializing our game board which will be used by the optimizer to find an optimal move
 let board = [
     ['','',''],
     ['','',''],
     ['','','']
 ];
+// Select our components from our HTML file.
 const whoWillPlayFirst = document.querySelector(".firstOne");
 const choose = document.querySelector(".choose");
 const card = document.querySelector(".card");
 const tiles = document.querySelectorAll(".tile");
 const won = document.querySelector(".won");
-function firstOne(btn)
-{
-    if (btn.innerHTML == 'CPU')
-    {
-        currentPlayer = cpu;
-    }else{
-        currentPlayer = user;
-    }
-    whoWillPlayFirst.classList.remove("activate");
-    card.classList.add("activate");
-}
+// The "moves" variable will keep a track of how many moves that have been played. Though it is used only once just to make the CPU play Random at first turn.
+let moves = 0;
 
-function choice(btn)
-{
-    user = btn.innerHTML;
-    if (user == 'X')
-    {
-        cpu = 'O';
-        scoresIndex = {
-            X: -10,
-            O: +10,
-            TIE: 0
-        }
-    }else{
-        cpu = 'X';
-        scoresIndex = {
-            X: +10,
-            O: -10,
-            TIE: 0
-        }
-    }
-    
-    choose.classList.remove('activate');
-    whoWillPlayFirst.classList.add("activate");
-}
 
+// The below loop assigns a coordinate ID to every tile on the board
 for (let i = 0; i < board.length; i++)
 {
     for (let j = 0; j < board[0].length; j++)
@@ -57,6 +30,7 @@ for (let i = 0; i < board.length; i++)
     }
 }
 
+// The below function keeps checking if it's CPU's turn or not. If yes, then it invokes the function for it's play.
 setInterval(()=>{
     if (currentPlayer == cpu)
     {
@@ -64,52 +38,116 @@ setInterval(()=>{
     }
 }, 1);
 
+
+
+// =============================================================
+// =====================FUNCTIONS===============================
+// =============================================================
+
+// This function is invoked when the user chooses who will be the first one to make the move.
+function firstOne(btn)
+{
+    if (btn.innerHTML == 'CPU')
+    {
+        currentPlayer = cpu;
+    }else{
+        currentPlayer = user;
+    }
+    // Changing the visuals
+    whoWillPlayFirst.classList.remove("activate");
+    card.classList.add("activate");
+}
+
+// This function is invoked when user chooses which symbol he/she wants to take.
+// This function will reinitialize the symbol values of user and cpu, that were defined above at the beginning of the code.
+function choice(btn)
+{
+    user = btn.innerHTML;
+    // We assign the values accordingly using switchcase.
+    switch (user) {
+        case 'X':
+            cpu = 'O';
+            // If the user chooses X, then cpu will have O and then O will have to be a maximizer, so the Score index is set accordingly.
+            scoresIndex = {
+                X: -10,
+                O: +10,
+                TIE: 0
+            }
+            break;
+        case 'O':
+            cpu = 'X';
+            // If the user chooses O, then cpu will have X and then X will have to be a maximizer, so the Score index is set accordingly.
+            scoresIndex = {
+                X: +10,
+                O: -10,
+                TIE: 0
+            }
+            break;
+        default:
+            // Incase something goes wrong.
+            console.log("Something went wrong");
+            break;
+    }
+    // Changing the visuals.
+    choose.classList.remove('activate');
+    whoWillPlayFirst.classList.add("activate");
+}
+
+// The below function takes the tile object as parameter and accordingly sets the symbols on the tiles.
 function triggerClick(tile)
 {
+    // If it's user's turn
     if (currentPlayer == user)
     {
-        console.log("Pressed");
-        if (user == 'O')
-        {
-            tile.classList.add("cpu");
-        }
+        // We Increment the value of "moves".
+        moves++;
         tile.innerHTML = currentPlayer;
+        // We add a class "disabled" to our tile so that there are no further pointer events on that tile.
         tile.classList.add("disabled");
         board[(tile.id)[0]][(tile.id)[1]] = currentPlayer;
+        // Checking if anyone has won or not.
         let x = checkWinner();
         if (x == null)
         {
+            // If no one has won and it's not a tie either then continue the game
             currentPlayer = cpu;
         }else{
             if (x == "TIE")
             {
+                // If it's a Tie, then print it and clear the currentPlayer value to avoid any mess.
                 displayWinner("TIE");
                 currentPlayer = null;
             }else{
+                // If someone has won, then disable every tile and display the winner and clear the currentPlayer value.
                 displayWinner(x);
                 currentPlayer = null;
                 disableEveryTile();
             }
         }
     }else{
-        console.log("Pressed");
-        if (user != 'O')
-        {
-            tile.classList.add("cpu");
-        }
+        // If it's CPU's turn
+        // We Increment the value of "moves".
+        moves++;
+        // We add a special class that differentiates user with the CPU as CPU's symbol colour will be Yellow.
+        tile.classList.add("cpu");
         tile.innerHTML = currentPlayer;
+        // We add a class "disabled" to our tile so that there are no further pointer events on that tile.
         tile.classList.add("disabled");
         board[(tile.id)[0]][(tile.id)[1]] = currentPlayer;
+        // Checking if someone has won or not
         let x = checkWinner();
         if (x == null)
         {
+            // If no one has won and it's not a tie either then continue the game
             currentPlayer = user;
         }else{
             if (x == "TIE")
             {
+                // If it's a Tie, then print it and clear the currentPlayer value to avoid any mess.
                 displayWinner("TIE");
                 currentPlayer = null;
             }else{
+                // If someone has won, then disable every tile and display the winner and clear the currentPlayer value.
                 displayWinner(x);
                 currentPlayer = null;
                 disableEveryTile();
@@ -128,6 +166,7 @@ function matchChecker(a, b, c)
 // This function checks if someone has won the game
 function checkWinner()
 {
+    // Initialize the winner as null which will indicate that no one has won.
     let winner = null;
     // Horizontal
     for (let i = 0; i < 3; i++)
@@ -179,10 +218,13 @@ function checkWinner()
     }
 }
 
+// The below function, takes a winner parameter and displays the winner.
 function displayWinner(winner)
 {
+    // Changing visuals
     card.classList.remove("activate");
     const wonTitle = document.querySelector(".won-title");
+    // Manipulating text according to who has won the game
     if (winner == cpu)
     {
         wonTitle.innerHTML = "CPU wins!";
@@ -194,9 +236,11 @@ function displayWinner(winner)
             wonTitle.innerHTML = "You win!";
         }
     }
+    // Changing visuals
     won.classList.add("activate");
 }
 
+// The below function makes ever tile unclickable.
 function disableEveryTile()
 {
     for (let i = 0; i < board.length; i++)
@@ -211,13 +255,18 @@ function disableEveryTile()
     }
 }
 
-
+// The below function resets the page in case the user want a replay
 function reset()
 {
     window.location.reload();
 }
 
+// The below function redirect to my Github account on a new tab.
 function myGithub()
 {
     window.open("https://github.com/iamankitdwivedi", "_blank");
 }
+
+
+// █▀▀ █▀█ █▀▀ ▄▀█ ▀█▀ █ █▀█ █▄░█   █▄▄ █▄█   ▄▀█ █▄░█ █▄▀ █ ▀█▀   █▀▄ █░█░█ █ █░█ █▀▀ █▀▄ █
+// █▄▄ █▀▄ ██▄ █▀█ ░█░ █ █▄█ █░▀█   █▄█ ░█░   █▀█ █░▀█ █░█ █ ░█░   █▄▀ ▀▄▀▄▀ █ ▀▄▀ ██▄ █▄▀ █

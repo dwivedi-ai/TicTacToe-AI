@@ -5,7 +5,8 @@
 
 ### 🎯 About TicTacToe-AI
 
-This is a Tic Tac Toe game made by using Web Technologies. The most interesting thing in this is that it has an Artificial Intelligence to play with the user. This AI uses the Minimax Algorithm to find the best optimal move.
+This is a Tic Tac Toe game made by using Web Technologies. The most interesting thing in this is that it has an Artificial Intelligence to play with the user. This AI uses the Minimax Algorithm with the Alpha-Beta Pruning to find the best optimal move efficiently.
+To make the game a bit more fun, I have set the CPU to make the first move randomly instead of computing the most optimal move.
 
 ### 🎯 This project is live at the URL: https://iamankitdwivedi.github.io/TicTacToe-AI/
 
