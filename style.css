@@ -1,15 +1,28 @@
 /* Colors:
-Rich Black FOGRA 29: #001219
-Gunmetal: #192A32
-Oxford Blue: #0F152C
-Space Cadets: #17203E
-Wild Blue Yonder: #8EA4DB
-Vivid Sky Blue: #00C9EA
-Glaucous: #5B79B8
+    Rich Black FOGRA 29: #001219 (Background & Border)
+    Gunmetal: #192A32 (Card Background)
+    Turquoise: #2dc5be (X Button)
+    Saffron: #f2b237 (O Button)
+    Big Stone: #1f3540 (Choose Bg and text color)   
 */
 
 /* My styling is horrible, read it at your own risk */
 
+/* Colors Variables */
+:root{
+    --rich-black-bg-border: #001219;
+    --gunmetal-card-bg: #192A32;
+    --turquoise-xbtn: #2dc5be;
+    --saffron-obtn: #f2b237;
+    --big-stone: #1f3540;
+}
+
+/* Universal Selector */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
 *:focus {
     -webkit-tap-highlight-color: transparent;
     outline: none;
@@ -17,43 +30,29 @@ Glaucous: #5B79B8
     touch-action: manipulation;
 }
 
+/* Body */
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #001219;
+    background-color: var(--rich-black-bg-border);
 }
 
-main {
-    height: 100vh;
-    display: flex;
-    flex-flow: column;
-}
-
-
+/* Header */
 header {
-    
-    background-color: #001219;
-    height: 4rem;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 15px 0;
 }
 .nav {
-    flex: 0 1 auto;
-    height: 3rem;
     display: flex;
     align-items: center;
     background-color: white;
-    padding-right: 15px;
-    padding-left: 15px;
+    padding: 10px 18px;
     border-radius: 2rem;
-    margin-top: 1rem;
     cursor: pointer;
     transition: all 0.3s ease;
 }
 .nav:hover{
-    height: 4rem;
     padding-left: 20px;
     padding-right: 20px;
     font-size: larger;
@@ -69,19 +68,80 @@ header {
     width: 3rem;
     border-radius: 50px;
 }
+
+/* Main */
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+}
+.choose {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%) scale(0.9);
+    background-color: var(--big-stone);
+    height: fit-content;
+    padding: 20px 0;
+    color: var(--turquoise-xbtn);
+    border-radius: 25px;
+    opacity: 0;
+    pointer-events: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: all 0.3s ease;
+    min-width: 300px;
+}
 .activate {
     opacity: 1;
     pointer-events: auto;
     transform: translate(-50%,-50%) scale(1);
 }
-.content {
-    flex: 1 1 auto;
-    height: 100vh;
+.choose-title {
+    border-bottom: 1px solid var(--rich-black-bg-border);
+    text-align: center;
+    font-size: 2em;
+    padding: 8px 50px 20px;
+}
+.choose-btn {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 20px 0; 
+}
+.choose:first-of-type .choose-btn{
+    padding: 20px 0px 20px 0px;
+    justify-content: space-evenly;
+}
+.choose:first-of-type .chooser{
+    padding: 5px 50px;
+    margin: 0;
+}
+.chooser {
+    cursor: pointer;
+    color: var(--big-stone);
+    font-weight: 800;
+    font-size: 3em;
+    width: fit-content;
+    padding: 5px 25px;
+    border-radius: 10px;
+    border-style: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.firstOne.choose-btn{
+    margin: 0 20px 0 0;
+}
+.x-btn{
+    background-color: var(--turquoise-xbtn);
+}
+.o-btn{
+    background-color: var(--saffron-obtn);
 }
 
+/* Style for the card contaning the game */
 .card {
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -90,19 +150,19 @@ header {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome, Edge, Opera and Firefox */
-    background-color: #192a32;
-    height: 500px;
-    width: 500px;
+    background-color: var(--gunmetal-card-bg); 
     border-radius: 25px;
     color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-rows: repeat(3, auto);
+    gap: 10px;
     opacity: 0;
     pointer-events: none;
     transform: scale(0.9);
     transition: all 0.3s ease;
-    
+    padding: 10px;
+    min-height: 300px;
+    min-width: 300px;
 }
 .card.activate {
     opacity: 1;
@@ -112,17 +172,14 @@ header {
 .row {
     display: flex;
     justify-content: space-evenly;
+    text-align: center;
+    gap: 10px;
 }
-
 .tile {
-    background-color: #1f3540;
+    background-color: var(--big-stone);
     height: 150px;
     width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #2dc5be;
-    font-family: 'Poppins';
+    color: var(--turquoise-xbtn);
     font-weight: 600;
     font-size: 6em;
     cursor: pointer;
@@ -130,117 +187,37 @@ header {
                 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .tile.cpu {
-    color: #f2b237;
+    color: var(--saffron-obtn);
 }
 .tile.disabled {
     pointer-events: none;
 }
 
-.choose {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.choose {
-    background-color: #1f3540;
-    height: 200px;
-    width: 400px;
-    color: #2dc5be;
-    border-radius: 25px;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    opacity: 0;
-    pointer-events: none;
-    transform: translate(-50%,-50%) scale(0.9);
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: all 0.3s ease;
-}
-
-.choose.activate {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translate(-50%,-50%) scale(1);
-}
-.choose-title {
-    height: 60px;
-    width: 100%;
-    border-bottom: 1px solid #001219;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Poppins';
-    font-size: 2em;
-}
-
-.choose-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 139px;
-    
-}
-.chooser {
-    cursor: pointer;
-    color: #1f3540;
-    font-family: 'Poppins';
-    font-weight: 800;
-    font-size: 3em;
-    height: 80px;
-    width: 150px;
-    border-radius: 10px;
-    border-style: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.win-choose-btn {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    height: 119px;
-    
-}
-
-.reset {
-    width: 180px;
-    cursor: pointer;
-    color: #1f3540;
-    font-family: 'Poppins';
-    font-weight: 800;
-    font-size: 3em;
-    height: 80px;
-    border-radius: 10px;
-    border-style: none;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-                0 6px 20px 0 rgba(0, 0, 0, 0.19);
+/* Won/Lose/Tie */
+.won .choose-btn{
+    padding: 0;
 }
 .won-title {
     font-weight: 600;
-    height: 80px;
+    padding: 0px 50px 0px;
     font-size: 3em;
 }
+.reset {
+    background-color: var(--saffron-obtn);
+    margin: 30px 0 20px;
+}
+
 /* Media Queries */
 @media only screen and (max-width: 768px) {
+
     /* For mobile phones: */
-    .card {
-        height: 300px;
-        width: 300px;
+    .choose{
+        font-size: 0.8em;
     }
+    
     .tile {
         height: 90px;
         width: 90px;
-    }
-    .choose{
-        width: 300px;
-        font-size: 0.8em;
-    }
-    .chooser{
-        width: 120px;
     }
 }
 
