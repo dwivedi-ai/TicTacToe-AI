@@ -5,64 +5,79 @@
     <meta http-equiv="-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TicTacToe AI - Ankit Dwivedi</title>
+    <!-- StyleSheet -->
     <link rel="stylesheet" href="style.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,500;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
-    </style>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
 </head>
 <body>
-    <main>
-        <header>
-           <div class="nav" onclick="myGithub()">
-               <img src="images/65527745.jpeg" alt="">
-               &nbsp;
-               CREATION BY ANKIT DWIVEDI 
-           </div>
-        </header>
-        <div class="content">
+    
+    <!-- Header -->
+    <header>
+        <div class="nav" onclick="myGithub()">
+            <img src="images/65527745.jpeg" alt="">
+            &nbsp;
+            CREATION BY ANKIT DWIVEDI 
+        </div>
+    </header>
 
-            <div class="choose activate">
-                <div class="choose-title">What do you want?</div>
-                <div class="choose-btn">
-                <button class="chooser" onclick="choice(this)" style="background-color: #2dc5be;">X</button>
-                <button class="chooser" onclick="choice(this)" style="background-color: #f2b237;">O</button>
-                </div>
-            </div>
-            <div class="firstOne choose">
-                <div class="choose-title">Who will play first?</div>
-                <div class="choose-btn">
-                <button class="chooser" onclick="firstOne(this)" style="background-color: #2dc5be;">YOU</button>
-                <button class="chooser" onclick="firstOne(this)" style="background-color: #f2b237;">CPU</button>
-                </div>
-            </div>
-            <div class="card">
-                <div class="row">
-                    <div class="tile" style="border-top-left-radius: 25px;"></div>
-                    <div class="tile"></div>
-                    <div class="tile" style="border-top-right-radius: 25px;"></div>
-                </div>
-                <div class="row">
-                    <div class="tile"></div>
-                    <div class="tile"></div>
-                    <div class="tile"></div>
-                </div>
-                <div class="row">
-                    <div class="tile" style="border-bottom-left-radius: 25px;"></div>
-                    <div class="tile"></div>
-                    <div class="tile" style="border-bottom-right-radius: 25px;"></div>
-                </div>
-            </div>
-            <div class="won choose">
-                <div class="won-title choose-title"></div>
-                <div class="win-choose-btn">
-                <button class="reset" onclick="reset()" style="background-color: #f2b237;">RESET</button>
-                </div>
+    <!-- Main -->
+    <main>
+
+        <!-- Container to let the user select if they want X or O -->
+        <div class="choose activate">
+            <h2 class="choose-title">What do you want?</h2>
+            <div class="choose-btn">
+                <button class="chooser x-btn" onclick="choice(this)">X</button>
+                <button class="chooser o-btn" onclick="choice(this)">O</button>
             </div>
         </div>
+
+        <!-- Container to let the user decide who will play first: user or computer? -->
+        <div class="firstOne choose">
+            <h2 class="choose-title">Who will play first?</h2>
+            <div class="choose-btn">
+                <button class="chooser x-btn" onclick="firstOne(this)">YOU</button>
+                <button class="chooser o-btn" onclick="firstOne(this)">CPU</button>
+            </div>
+        </div>
+
+        <!-- Card containing the tic-tae-toe structure -->
+        <div class="card">
+            <div class="row">
+                <div class="tile" style="border-top-left-radius: 25px;"></div>
+                <div class="tile"></div>
+                <div class="tile" style="border-top-right-radius: 25px;"></div>
+            </div>
+            <div class="row">
+                <div class="tile"></div>
+                <div class="tile"></div>
+                <div class="tile"></div>
+            </div>
+            <div class="row">
+                <div class="tile" style="border-bottom-left-radius: 25px;"></div>
+                <div class="tile"></div>
+                <div class="tile" style="border-bottom-right-radius: 25px;"></div>
+            </div>
+        </div>
+
+        <!-- Container to show the user if they won/lose or if the game tied -->
+        <div class="won choose">
+            <h2 class="won-title choose-title"></h2>
+            <div class="choose-btn">
+            <button class="reset chooser" onclick="reset()">RESET</button>
+            </div>
+        </div>
+        
     </main>
+
+    <!-- Script -->
     <script src="app.js"></script>
     <script src="optimizer.js"></script>
+
 </body>
 </html>
 
