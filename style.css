@@ -218,6 +218,7 @@ main {
     .tile {
         height: 90px;
         width: 90px;
+        font-size: 4em;
     }
 }
 
