@@ -10,13 +10,6 @@ Glaucous: #5B79B8
 
 /* My styling is horrible, read it at your own risk */
 
-*:focus {
-    -webkit-tap-highlight-color: transparent;
-    outline: none;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-}
-
 body {
     margin: 0;
     padding: 0;
