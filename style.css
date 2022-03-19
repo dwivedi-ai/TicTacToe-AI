@@ -227,7 +227,6 @@ header {
     .tile {
         height: 90px;
         width: 90px;
-<<<<<<< HEAD
     }
     .choose{
         width: 300px;
@@ -235,8 +234,6 @@ header {
     }
     .chooser{
         width: 120px;
-=======
->>>>>>> parent of 429020a... Fixed the issue of mobile design
     }
 }
 
